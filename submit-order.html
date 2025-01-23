@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(120deg, #062094, #940656);
+            color: #fff;
+            text-align: center;
+        }
+
+        .confirmation-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #FFD700, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .payment-section {
+            display: none;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 1rem;
+            background: #FF69B4;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s;
+        }
+
+        label:hover {
+            background: #BA55D3;
+            transform: scale(1.05);
+        }
+
+        input[type="radio"]:checked + label {
+            background: #BA55D3;
+        }
+
+        #cash:checked ~ .cash-section,
+        #gcash:checked ~ .gcash-section {
+            display: block;
+        }
+
+        .gcash-input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #FFD700;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .gcash-input::placeholder {
+            color: #FFD700;
+        }
+		
+		.lock-icon {
+            font-size: 1.5rem;
+            color: #FFD700;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            background: #FF69B4;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s, background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+        }
+
+        a:hover {
+            background: #BA55D3;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(186, 85, 211, 0.6);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>How Would You Like to Pay?</h1>
+        <form>
+            <input type="radio" id="cash" name="payment-method">
+            <label for="cash">Cash</label>
+
+            <input type="radio" id="gcash" name="payment-method">
+            <label for="gcash">GCash</label>
+
+            <div class="payment-section cash-section">
+                <p>Thank You for Choosing to Pay at the Counter!</p> 
+                <h2>Your order number is #16. Please wait in line.</h2>
+                <a href="menu.html">Back to Menu</a>
+            </div>
+
+            <div class="payment-section gcash-section">
+                <p>Thank You for Choosing GCash!</p>
+                <h2>Please enter your GCash number:</h2>
+                <div class="gcash-input-container">
+                    <input type="text" class="gcash-input" placeholder="09XXXXXXXXX">
+                    <span class="lock-icon">🔒</span>
+				</div>
+                <a href="menu.html">Confirm Order</a>
+				</div>
+        </form>
+    </div>
+</body>
+</html>
