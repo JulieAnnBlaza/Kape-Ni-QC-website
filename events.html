@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(120deg, #062094, #940656);
+			color: #fff;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			margin: 0; 
+		}
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: linear-gradient(90deg, #1a1a1a, #3333cc, #ff3399);
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+        }
+
+        header img {
+            height: 80%;
+            width: auto;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+        }
+
+        .nav-left a, .nav-right a {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.9rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left a {
+            color: #ff3399;
+        }
+
+        .nav-right a {
+            color: #00008B;
+        }
+
+        .nav-left a:hover {
+            color: #ffffff;
+        }
+
+        .nav-right a:hover {
+            color: #000000;
+        }
+
+        main {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .event-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px; 
+        }
+
+        .event {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(0); 
+            transition: transform 0.3s ease; 
+        }
+
+        .event:nth-child(1):hover {
+            transform: translateY(-10px); 
+        }
+
+        .event:nth-child(2):hover {
+            transform: translateY(5px); 
+        }
+
+        .event img {
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .event-text {
+            width: 45%; 
+            padding: 0 20px;
+        }
+
+        .event-text h1 {
+            font-size: 3.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .event-text h1 .day {
+            display: block;
+            font-size: 3.1rem;
+            color: white;
+        }
+
+        .event-text h1 span {
+            color: #cf214a;
+        }
+
+        .event-text p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
+            font-size: 1.2rem;
+        }
+		
+		footer {
+            background-color: #363333;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer a {
+            color: lightblue;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            header img {
+                max-height: 80px;
+            }
+
+            .nav-left, .nav-right {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-left a, .nav-right a {
+                font-size: 1.2rem;
+                margin: 5px 10px;
+            }
+
+            .event {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .event img, .event-text {
+                width: 100%;
+            }
+
+            .event-text {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-left a, .nav-right a {
+                font-size: 1rem;
+            }
+
+            header img {
+                max-height: 60px;
+            }
+
+            .event-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .event-text p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-left">
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <img src="kape-ni-logo.png" alt="Logo">
+        <nav class="nav-right">
+            <a href="reviews.html">Reviews</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="event-container">
+            <div class="event">
+                <img src="Feb14th.png" alt="Teddy Bear">
+                <div class="event-text">
+                    <h1>Happy <span>Valentine's</span><br><span class="day">Day!</span></h1>
+                    <p>Celebrate love this UPCOMING February 14th with Kape Ni Menu's exclusive promo!</p>
+					<p>Enjoy a Buy 1 Take 1 offer for only ₱65. Bring your special someone, friends, or family and share a cup of love.</p>
+                </div>
+            </div>
+
+            <div class="event">
+                <img src="KAPE NI WALL.png" alt="Wall of Love">
+                <div class="event-text">
+                    <h1>DEAR <span>YOU</span></h1>
+                    <p>Express your love and appreciation this Valentine’s Day at Kape ni Wall! Write heartfelt messages for your loved ones on sticky notes and stick them on our vandalism wall. Share your thoughts, feelings, and memories while enjoying your favorite cup of coffee or snacks.</p>
+					<p>Let your words brew love and inspiration for everyone!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+	
+	<footer>
+        <p>© 2025 Kape Ni. All rights reserved.</p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+	
+</body>
+</html>

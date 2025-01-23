@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #062094, #940656);
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: linear-gradient(90deg, #1a1a1a, #3333cc, #ff3399);
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            height: 100%;
+            width: auto;
+            margin: 0 10px;
+            object-fit: cover;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+        }
+
+        .nav-left a, .nav-right a {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.9rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left a {
+            color: #ff3399;
+        }
+
+        .nav-right a {
+            color: #00008B;
+        }
+
+        .nav-left a:hover {
+            color: #ffffff;
+        }
+
+        .nav-right a:hover {
+            color: #000000;
+        }
+
+        .review-form {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .review-form:hover {
+            transform: scale(1.02);
+        }
+		
+		.review-form h2 {
+            text-align: center;
+            color: #0044cc;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+		
+		.header {
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+
+        .stars input {
+            display: none;
+        }
+
+        .stars label {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            background: linear-gradient(to right, #0044cc, #cc0099);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, opacity 0.2s;
+            opacity: 0.5;
+        }
+
+        .stars label:hover,
+        .stars input:checked ~ label {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+		
+		.review-form textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+            font-size: 1em;
+        }
+
+        .review-form textarea:focus {
+            border-color: #0044cc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 68, 204, 0.5);
+        }
+
+        .review-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0044cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 15px;
+        }
+
+        .review-form button:hover {
+            background-color: #b33477;
+            transform: translateY(-2px);
+        }
+
+        .reviews-display {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .reviews-display h2 {
+			text-align: center;
+			margin-bottom: 20px;
+			color: black;  
+		}
+
+
+		.review-heading {
+			text-align: center;
+			font-size: 2em;
+			font-family: 'Georgia', serif; 
+			color: #0044cc;
+			background: linear-gradient(to right, #0044cc, #cc0099);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			margin-bottom: 20px;
+			letter-spacing: 2px;
+			font-weight: bold;
+		}
+		
+        .review-card {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .review-card:last-child {
+            border-bottom: none;
+        }
+
+        .review-card .stars-display {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .stars-display .star {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(to right, #0044cc, #cc0099);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .review-card p {
+            margin: 0;
+            color: #000;
+        }
+		
+		footer {
+            background-color: #363333;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer a {
+            color: lightblue;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+        
+		@keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+		@media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            header img {
+                max-height: 80px;
+            }
+
+            .nav-left, .nav-right {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-left a, .nav-right a {
+                font-size: 1.2rem;
+                margin: 5px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-left a, .nav-right a {
+                font-size: 1rem;
+            }
+
+            header img {
+                max-height: 60px;
+            }
+		} 
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-left">
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <img src="kape-ni-logo.png" alt="Logo">
+        <nav class="nav-right">
+            <a href="reviews.html">Reviews</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+        </nav>
+    </header>
+
+   <main> 
+	<div class="review-form">
+        <h2 class="review-heading">-Share Your Thoughts-</h2>
+        <form onsubmit="this.reset(); return false;">
+            <div class="stars">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5" title="5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" title="4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" title="2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" title="1 star"></label>
+            </div>
+            <textarea name="review" placeholder="Write your review here..."></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="reviews-display">
+        <h2>Customer Reviews</h2>
+        <div class="review-card">
+            <div class="stars-display">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+            <p>"I'm not a coffee drinker, but their Salted Caramel is amazing! The staff is so friendly too."</p>
+            <p><strong>- Wanwan</strong></p>
+        </div>
+        <div class="review-card">
+            <div class="stars-display">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+            <p>"Delicious snacks and excellent coffee. What more can you ask for?"</p>
+			<p><strong>- Nana</strong></p>
+		</div>
+		<div class="review-card">
+            <div class="stars-display">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+			<p>"The coffee is superb, and the ambiance is cozy! Perfect spot to relax and unwind."</p>
+			<p><strong>- Kagura</strong></p>
+		</div>
+		</div>
+		</main>
+		
+	<footer>
+        <p>© 2025 Kape Ni. All rights reserved.</p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+	
+</body>
+</html>

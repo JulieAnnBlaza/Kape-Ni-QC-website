@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAPE-NI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: linear-gradient(90deg, #1a1a1a, #3333cc, #ff3399);
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            flex-wrap: wrap;
+        }
+
+        header img {
+            height: 100%;
+            width: auto;
+            margin: 0 10px;
+            object-fit: cover;
+            max-width: 120px;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .nav-left a, .nav-right a {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.9rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left a {
+            color: #ff3399;
+        }
+
+        .nav-right a {
+            color: #00008B;
+        }
+
+        .nav-left a:hover {
+            color: #ffffff;
+        }
+
+        .nav-right a:hover {
+            color: #000000;
+        }
+
+        .home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('kape-ni-background.jpeg') no-repeat center center/cover;
+            color: white;
+            animation: parallaxScroll 15s linear infinite;
+            padding: 20px;
+        }
+
+        @keyframes parallaxScroll {
+            0% {
+                background-position: 50% 0%;
+            }
+            50% {
+                background-position: 50% 50%;
+            }
+            100% {
+                background-position: 50% 100%;
+            }
+        }
+
+        footer {
+            background-color: #363333;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: lightblue;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .description-container {
+            text-align: center;
+            max-width: 850px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .description-container span:first-child {
+            display: block;
+            font-family: 'Segoe Script', cursive;
+            font-size: 2.8rem;
+            color: lightblue;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .description-container span.highlight {
+            display: block;
+            font-size: 1.8rem;
+            font-style: italic;
+            font-family: 'Segoe Script', cursive;
+            color: lightpink;
+            margin-bottom: 20px;
+        }
+
+        .description-container p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #f5f5f5;
+        }
+
+        .description-container p strong {
+            color: #D3D3D3; 
+        }
+
+        .key-lines {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .key-lines p {
+            display: inline-block;
+            font-size: 1.8rem;
+            color: white;
+            padding: 10px 15px;
+            background: #000;
+            border-radius: 8px;
+            border: 2px solid #ff3399;
+            animation: letterHighlight 4s infinite;
+        }
+
+        .key-lines p:first-child {
+            margin-bottom: 25px;
+        }
+
+        .key-lines p span {
+            display: inline-block;
+            animation: colorChange 1.8s infinite;
+        }
+
+        .key-lines p span:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .key-lines p span:nth-child(even) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #0000FF;
+            }
+            50% {
+                color: #ffffff;
+            }
+            100% {
+                color: #0000FF;
+            }
+        }
+
+        @keyframes letterHighlight {
+            0% {
+                background: #000;
+            }
+            50% {
+                background: rgba(255, 51, 153, 0.8);
+            }
+            100% {
+                background: #000;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            header img {
+                max-height: 80px;
+            }
+
+            .nav-left, .nav-right {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-left a, .nav-right a {
+                font-size: 1.2rem;
+                margin: 5px 10px;
+            }
+
+            .home p {
+                font-size: 1.5rem;
+            }
+
+            .description-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-left a, .nav-right a {
+                font-size: 1rem;
+            }
+
+            header img {
+                max-height: 60px;
+            }
+
+            .home p {
+                font-size: 1.2rem;
+            }
+
+            .description-container span:first-child {
+                font-size: 2.5rem;
+            }
+
+            .description-container span.highlight {
+                font-size: 1.5rem;
+            }
+
+            .description-container p {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-left">
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <img src="kape-ni-logo.png" alt="KAPE-NI QC Logo">
+        <nav class="nav-right">
+            <a href="reviews.html">Reviews</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home">
+            <div class="description-container">
+                <span>Welcome to KAPE-NI QC</span>
+                <span class="highlight">Where Coffee Meets Aesthetic Vibes!</span>
+                <p>
+                    Step into Quezon City’s most charming café. Your haven for great coffee, good ambiance, and unforgettable experiences. Whether you’re here to power through work, dive into a book, or share laughs with friends, our cozy corners and artistic atmosphere are designed just for you.
+                </p>
+                <p>
+                    ☕ <strong>Enjoy each taste of our crowd favorites</strong>--crafted with care and served with a touch of magic.<br>
+                    🧁 <strong>Treat yourself to budget-friendly treats</strong>--that satisfy your cravings without hurting your wallet. 
+                </p>
+            </div>
+
+        <div class="key-lines">
+        <p>
+            🎉 <span>D</span><span>r</span><span>o</span><span>p</span> <span>b</span><span>y</span> <span>t</span><span>o</span><span>d</span><span>a</span><span>y</span> <span>a</span><span>n</span><span>d</span> <span>d</span><span>i</span><span>s</span><span>c</span><span>o</span><span>v</span><span>e</span><span>r</span> <span>w</span><span>h</span><span>y</span> <span>e</span><span>v</span><span>e</span><span>r</span><span>y</span> <span>s</span><span>i</span><span>p</span> 
+            <br><span>i</span><span>s</span> <span>b</span><span>e</span><span>t</span><span>t</span><span>e</span><span>r</span> <span>a</span><span>t</span> <span>K</span><span>A</span><span>P</span><span>E</span><span>-</span><span>N</span><span>I</span> <span>Q</span><span>C</span>! 🎉</br>
+        </p>
+        </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Kape Ni. All rights reserved.</p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+
+</body>
+</html>

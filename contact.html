@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* Main styles */
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #062094, #940656);
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: linear-gradient(90deg, #1a1a1a, #3333cc, #ff3399);
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            height: 100%;
+            width: auto;
+            margin: 0 10px;
+            object-fit: cover;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+        }
+
+        .nav-left a, .nav-right a {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.9rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left a {
+            color: #ff3399;
+        }
+
+        .nav-right a {
+            color: #00008B;
+        }
+
+        .nav-left a:hover {
+            color: #ffffff;
+        }
+
+        .nav-right a:hover {
+            color: #000000;
+        }
+
+        .contact-section {
+            position: relative;
+            height: 100vh;
+            background: url('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.934720935809!2d121.07805331484308!3d14.685007379723848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b0c38736e1f9%3A0x808ea6c85d01159d!2s195%20Don%20Fabian%20Ave%2C%20Quezon%20City%2C%201112%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1616468737612!5m2!1sen!2sph') no-repeat center center/cover;
+        }
+
+        .contact-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .contact-details {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.8); /* Reduced transparency */
+            padding: 20px;
+            border: 2px solid #6b4f4f;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .contact-details p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #6b4f4f;
+        }
+
+        .contact-details ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .social-icon {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .contact-details a {
+            text-decoration: none;
+            color: #6b4f4f;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #116efa;
+        }
+
+        .contact-details a[href^="mailto:"] {
+            text-decoration: underline;
+        }
+
+        .contact-details strong {
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .contact-details span {
+            vertical-align: middle;
+        }
+
+        footer {
+            background-color: #363333;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer a {
+            color: lightblue;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            header img {
+                max-height: 80px;
+            }
+
+            .nav-left, .nav-right {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-left a, .nav-right a {
+                font-size: 1.2rem;
+                margin: 5px 10px;
+            }
+
+            .contact-details {
+                width: 100%;
+                top: auto;
+                left: 0;
+                bottom: 20px;
+                right: 0;
+                padding: 15px;
+            }
+
+            .contact-details p,
+            .contact-details a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-left a, .nav-right a {
+                font-size: 1rem;
+            }
+
+            header img {
+                max-height: 60px;
+            }
+
+            .contact-details {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-left">
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <img src="kape-ni-logo.png" alt="KAPE-NI QC Logo">
+        <nav class="nav-right">
+            <a href="reviews.html">Reviews</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.934720935809!2d121.07805331484308!3d14.685007379723848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b0c38736e1f9%3A0x808ea6c85d01159d!2s195%20Don%20Fabian%20Ave%2C%20Quezon%20City%2C%201112%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1616468737612!5m2!1sen!2sph"></iframe>
+            <div class="contact-details">
+                <p><strong style="color: #ff3399;">Phone:</strong> 0939 516 7197</p>
+                <p><strong style="color: #00008B;">Email:</strong> <a href="mailto:kapeniqc@gmail.com">kapeniqc@gmail.com</a></p>
+                <p><strong style="color: #ff3399;">Socials:</strong></p>
+                <ul class="social-links">
+                    <li>
+                        <a href="https://www.facebook.com/ms.cabrini?mibextid=ZbWKwL" target="_blank">
+                            <img src="facebook-icon.png" alt="Facebook" class="social-icon">
+                            <span>Kape Ni- QC</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/kape_ni_qc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                            <img src="instagram-icon.png" alt="Instagram" class="social-icon">
+                            <span>kape_ni_qc</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@kape.ni.qc" target="_blank">
+                            <img src="tiktok-icon.png" alt="TikTok" class="social-icon">
+                            <span>kape.ni.qc</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Kape Ni. All rights reserved.</p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+</body>
+</html>

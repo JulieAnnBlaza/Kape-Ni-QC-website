@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #062094, #940656);
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: linear-gradient(90deg, #1a1a1a, #3333cc, #ff3399);
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header img {
+            height: 100%;
+            width: auto;
+            margin: 0 10px;
+            object-fit: cover;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+        }
+
+        .nav-left a, .nav-right a {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.9rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left a {
+            color: #ff3399;
+        }
+
+        .nav-right a {
+            color: #00008B;
+        }
+
+        .nav-left a:hover {
+            color: #ffffff;
+        }
+
+        .nav-right a:hover {
+            color: #000000;
+        }
+
+        .menu-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .menu-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-category:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-category h2 {
+            text-align: center;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #FF69B4, #BA55D3);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 0;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .menu-item {
+            display: inline-block;
+            width: auto;
+            margin: auto;
+        }
+
+        .menu-section {
+            position: relative;
+            overflow: hidden;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            z-index: 1;
+            transition: transform 0.2s ease-in-out;
+            overflow: hidden;
+        }
+
+        .menu-item img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .menu-item p {
+            font-size: 1rem;
+            margin: 5px 0;
+            display: inline-block;
+        }
+
+        .menu-item .price {
+            font-size: 1rem;
+            margin: 5px 0;
+            border: 1px solid #1469b8;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sub-list {
+            margin-top: 10px;
+            padding-left: 15px;
+            text-align: left;
+        }
+
+        .sub-list li {
+			list-style-type: none; 
+			margin-bottom: 5px;
+			font-size: 0.9rem;
+			margin-left: 20px; 
+		}
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+			align-items: center;
+        }
+
+        .form-container label {
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .form-container input[type="checkbox"], .form-container input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .form-container input[type="submit"], .add-to-order-btn {
+            padding: 10px 20px;
+            background: #2c397a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover, .add-to-order-btn:hover {
+            background: #8f1d6b;
+        }
+
+		.submit-container {
+			margin-top: 30px; 
+			display: flex;
+			justify-content: center; 
+		}
+
+		.order-btn {
+			padding: 15px 30px;
+			background-color: #2c397a;
+			color: white;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 1.2rem;
+			transition: background-color 0.3s ease;
+		}
+
+		.order-btn:hover {
+			background-color: #8f1d6b;
+		}
+		
+		footer {
+            background-color: #363333;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer a {
+            color: lightblue;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+		
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            header img {
+                max-height: 80px;
+            }
+
+            .nav-left, .nav-right {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-left a, .nav-right a {
+                font-size: 1.2rem;
+                margin: 5px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-left a, .nav-right a {
+                font-size: 1rem;
+            }
+
+            header img {
+                max-height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-left">
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <img src="kape-ni-logo.png" alt="KAPE-NI QC Logo">
+        <nav class="nav-right">
+            <a href="#reviews">Reviews</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#events">Events</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="menu-container">
+            <section class="menu-category">
+                <h2>Snacks</h2>
+                <form method="POST" action="submit-order.html" class="form-container">
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="HOTDOG.png" alt="Hotdog">
+                            <h3>Hotdog</h3>
+                            <p class="price">King Size Sandwich - ₱40</p>
+                            <p class="price">King Size on Stick - ₱30</p>
+
+                            <ul class="sub-list">
+                                <p>Add-ons:</p>
+                                <li>
+                                    <label><input type="checkbox" name="add-ons[]" value="Cheese"> Cheese - ₱10</label>
+                                </li>
+                                <li>
+                                    <label><input type="checkbox" name="add-ons[]" value="Ketchup / Mayonnaise"> Ketchup / Mayonnaise - ₱5</label>
+                                </li>
+                                <p>Size:</p>
+                                <li>
+                                    <label><input type="checkbox" name="size[]" value="King Size"> King Size</label>
+                                </li>
+                                <li>
+                                    <label><input type="checkbox" name="size[]" value="Regular Size"> Regular Size</label>
+                                </li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="MINI DONUTS.png" alt="Mini Donuts">
+                            <h3>Mini Donut</h3>
+                            <p class="price">6 pcs - ₱50</p>
+                            <p class="price">12 pcs - ₱100</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Flavors:</p>
+                                <li><label><input type="checkbox" name="flavors[]" value="Matcha"> Matcha</label></li>
+                                <li><label><input type="checkbox" name="flavors[]" value="Chocolate"> Chocolate</label></li>
+                                <li><label><input type="checkbox" name="flavors[]" value="Strawberry"> Strawberry</label></li>
+                                <li><label><input type="checkbox" name="flavors[]" value="Caramel"> Caramel</label></li>
+                                <br>
+                                <p>Toppings:</p>
+                                <li><label><input type="checkbox" name="toppings[]" value="Oreos"> Oreos</label></li>
+                                <li><label><input type="checkbox" name="toppings[]" value="Matcha Powder"> Matcha Powder</label></li>
+                                <li><label><input type="checkbox" name="toppings[]" value="Sprinkle"> Sprinkle</label></li>
+                                <li><label><input type="checkbox" name="toppings[]" value="Nips"> Nips</label></li>
+                                <li><label><input type="checkbox" name="toppings[]" value="Mini Mallows"> Mini Mallows</label></li>
+                                <li><label><input type="checkbox" name="toppings[]" value="Crushed Grahams"> Crushed Grahams</label></li>
+                                <p>Size:</p>
+                                <li>
+                                    <label><input type="checkbox" name="donut-size[]" value="6 pcs"> 6 pcs</label>
+                                </li>
+                                <li>
+                                    <label><input type="checkbox" name="donut-size[]" value="12 pcs"> 12 pcs</label>
+                                </li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="BROWNIES.png" alt="Brownies">
+                            <h3>Brownies</h3>
+                            <p class="price">Small Tub - ₱65</p>
+                            <p class="price">Box (6 pcs) - ₱140</p>
+                            <ul class="sub-list">
+                                <p>Size:</p>
+                                <li>
+                                    <label><input type="checkbox" name="brownie-size[]" value="Small Tub"> Small Tub</label>
+                                </li>
+                                <li>
+                                    <label><input type="checkbox" name="brownie-size[]" value="Box (6 pcs)"> Box (6 pcs)</label>
+                                </li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="NACHOS.png" alt="Nachos">
+                            <h3>Nachos</h3>
+                            <p class="price">₱50</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="add-ons[]" value="Cheese"> Cheese - ₱10</label></li>
+                                <li><label><input type="checkbox" name="add-ons[]" value="Ketchup / Mayonnaise"> Ketchup / Mayonnaise - ₱5</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="CRACKERS.png" alt="Crackers">
+                            <h3>Crackers</h3>
+                            <p class="price">₱50</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="add-ons[]" value="Extra Vinegar"> Extra Vinegar - ₱5</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="GRAHAM.png" alt="Graham Bar">
+                            <h3>Graham Bar</h3>
+                            <p class="price">₱20</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="FRIES.png" alt="Fries">
+                            <h3>Fries</h3>
+                            <p class="price">₱45</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Flavors:</p>
+                                <li><label><input type="checkbox" name="fries-flavors[]" value="Plain"> Plain</label></li>
+                                <li><label><input type="checkbox" name="fries-flavors[]" value="Salted"> Salted</label></li>
+                                <li><label><input type="checkbox" name="fries-flavors[]" value="Cheese"> Cheese</label></li>
+                                <li><label><input type="checkbox" name="fries-flavors[]" value="BBQ"> BBQ</label></li>
+                                <li><label><input type="checkbox" name="fries-flavors[]" value="Sour Cream"> Sour Cream</label></li>
+                                <br>
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="add-ons[]" value="Cheese"> Cheese - ₱10</label></li>
+                                <li><label><input type="checkbox" name="add-ons[]" value="Ketchup / Mayonnaise"> Ketchup / Mayonnaise - ₱5</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="menu-category">
+                    <h2>Coffee</h2>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="CARAMEL MACCHIATO.png" alt="Caramel Macchiato">
+                            <h3>Caramel Macchiato</h3>
+                            <p class="price">Large - ₱50</p>
+                            <p class="price">Small - ₱40</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Size:</p>
+                                <li><label><input type="checkbox" name="caramel-macchiato-size" value="Large"> Large</label></li>
+                                <li><label><input type="checkbox" name="caramel-macchiato-size" value="Small"> Small</label></li>
+                                <br>
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="caramel-macchiato-add-ons[]" value="Espresso Shot"> Espresso Shot - ₱5</label></li>
+                                <li><label><input type="checkbox" name="caramel-macchiato-add-ons[]" value="Oreo"> Oreo - ₱10</label></li>
+                                <li><label><input type="checkbox" name="caramel-macchiato-add-ons[]" value="Cream Puff"> Cream Puff - ₱10</label></li>
+                                <li><label><input type="checkbox" name="caramel-macchiato-add-ons[]" value="Whipped Cream"> Whipped Cream - ₱20</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="SALTED CARAMEL.png" alt="Salted Caramel">
+                            <h3>Salted Caramel</h3>
+                            <p class="price">Large - ₱50</p> 
+                            <p class="price">Small - ₱40</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Size:</p>
+                                <li><label><input type="checkbox" name="salted-caramel-size" value="Large"> Large</label></li>
+                                <li><label><input type="checkbox" name="salted-caramel-size" value="Small"> Small</label></li>
+                                <br>
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="salted-caramel-add-ons[]" value="Espresso Shot"> Espresso Shot - ₱5</label></li>
+                                <li><label><input type="checkbox" name="salted-caramel-add-ons[]" value="Oreo"> Oreo - ₱10</label></li>
+                                <li><label><input type="checkbox" name="salted-caramel-add-ons[]" value="Cream Puff"> Cream Puff - ₱10</label></li>
+                                <li><label><input type="checkbox" name="salted-caramel-add-ons[]" value="Whipped Cream"> Whipped Cream - ₱20</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="WHITE CHOCOLATE.png" alt="White Chocolate">
+                            <h3>White Chocolate</h3>
+                            <p class="price">Large - ₱50</p>
+                            <p class="price">Small - ₱40</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Size:</p>
+                                <li><label><input type="checkbox" name="white-chocolate-size" value="Large"> Large</label></li>
+                                <li><label><input type="checkbox" name="white-chocolate-size" value="Small"> Small</label></li>
+                                <br>
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="white-chocolate-add-ons[]" value="Espresso Shot"> Espresso Shot - ₱5</label></li>
+                                <li><label><input type="checkbox" name="white-chocolate-add-ons[]" value="Oreo"> Oreo - ₱10</label></li>
+                                <li><label><input type="checkbox" name="white-chocolate-add-ons[]" value="Cream Puff"> Cream Puff - ₱10</label></li>
+                                <li><label><input type="checkbox" name="white-chocolate-add-ons[]" value="Whipped Cream"> Whipped Cream - ₱20</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="MOCHA HAZELNUT.png" alt="Mocha Hazelnut">
+                            <h3>Mocha Hazelnut</h3>
+                            <p class="price">Large - ₱50</p>
+                            <p class="price">Small - ₱40</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Size:</p>
+                                <li><label><input type="checkbox" name="mocha-hazelnut-size" value="Large"> Large</label></li>
+                                <li><label><input type="checkbox" name="mocha-hazelnut-size" value="Small"> Small</label></li>
+                                <br>
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="mocha-hazelnut-add-ons[]" value="Espresso Shot"> Espresso Shot - ₱5</label></li>
+                                <li><label><input type="checkbox" name="mocha-hazelnut-add-ons[]" value="Oreo"> Oreo - ₱10</label></li>
+                                <li><label><input type="checkbox" name="mocha-hazelnut-add-ons[]" value="Cream Puff"> Cream Puff - ₱10</label></li>
+                                <li><label><input type="checkbox" name="mocha-hazelnut-add-ons[]" value="Whipped Cream"> Whipped Cream - ₱20</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="VANILLA.png" alt="Vanilla">
+                            <h3>Vanilla</h3>
+                            <p class="price">Large - ₱50</p> 
+                            <p class="price">Small - ₱40</p>
+                            <br>
+                            <ul class="sub-list">
+                                <p>Size:</p>
+                                <li><label><input type="checkbox" name="vanilla-size" value="Large"> Large</label></li>
+                                <li><label><input type="checkbox" name="vanilla-size" value="Small"> Small</label></li>
+                                <br>
+                                <p>Add-ons:</p>
+                                <li><label><input type="checkbox" name="vanilla-add-ons[]" value="Espresso Shot"> Espresso Shot - ₱5</label></li>
+                                <li><label><input type="checkbox" name="vanilla-add-ons[]" value="Oreo"> Oreo - ₱10</label></li>
+                                <li><label><input type="checkbox" name="vanilla-add-ons[]" value="Cream Puff"> Cream Puff - ₱10</label></li>
+                                <li><label><input type="checkbox" name="vanilla-add-ons[]" value="Whipped Cream"> Whipped Cream - ₱20</label></li>
+                            </ul>
+                            <button type="button" class="add-to-order-btn">Add to Order</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="menu-category">
+                    <h2>Non-Coffee</h2>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="STRAWBERRY LATTE.png" alt="Strawberry Latte">
+                            <h3>Strawberry Latte</h3>
+                            <p class="price">Large - ₱50</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="DIRTY CHOCOLATE.png" alt="Dirty Chocolate">
+                            <h3>Dirty Chocolate</h3>
+                            <p class="price">Large - ₱50</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="MATCHA LATTE.png" alt="Matcha Latte">
+                            <h3>Matcha Latte</h3>
+                            <p class="price">Large - ₱50</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="STRAWBERRY SODA.png" alt="Strawberry Soda">
+                            <h3>Strawberry Soda</h3>
+                            <p class="price">Large - ₱50</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="GREEN APPLE SODA.png" alt="Green Apple Soda">
+                            <h3>Green Apple Soda</h3>
+                            <p class="price">Large - ₱50</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+                
+                        <div class="menu-item">
+                            <img src="STRAWBERRY MATCHA.png" alt="Strawberry Matcha">
+                            <h3>Strawberry Matcha</h3>
+                            <p class="price">Large - ₱50</p>
+                            <br><button type="button" class="add-to-order-btn">Add to Order</button></br>
+                        </div>
+                    </div>
+                </section>
+                
+                    <section class="menu-category">
+						<h2>Payment Method</h2>
+						<form method="POST" action="submit-order.html" class="form-container">
+							<div class="submit-container">
+								<input type="submit" value="Order Now" class="order-btn">
+							</div>
+						</form>
+		</<section>
+        </div>
+    </main>
+	
+	<footer>
+        <p>© 2025 Kape Ni. All rights reserved.</p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+	
+</body>
+</html>
